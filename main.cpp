@@ -1,11 +1,12 @@
 #include <iostream>
 #include <string>
 #include "lib/sqlite3.h"
+#include "bookDatabase.h"
 
 int main(){
     
-    int exit = 0;
-    sqlite3* DB;
-    exit = sqlite3_open("CarRentalSystem.db", &DB);
+    // create bookDatabase on heap
+    bookDatabase* db = new bookDatabase();
+    
     return 0;
 }

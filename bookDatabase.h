@@ -1,19 +1,21 @@
 // define book.h and make sure it cant be added twice
-#ifndef BOOK_H_EXISTS
-#define BOOK_H_EXISTS
+#ifndef BOOKDATABASE_H_EXISTS
+#define BOOKDATABASE_H_EXISTS
 
 #include "lib/sqlite3.h"
 #include <string>
 
-class book{
+class bookDatabase{
     private:
         sqlite3* DB;
-
+        int resultCode;
     public:
         // constructors
-        book();
-        book(sqlite3* DB);
+        bookDatabase();
         
+        // destructor
+        ~bookDatabase();
+
         // get book methods
         std::string* getBook(int id, std::string title, std::string author, int yearPub);
         
@@ -26,8 +28,8 @@ class book{
         // delete books method
         int deleteBook(int id, std::string title, std::string author, int yearPub);
 
-        // setter method
-        void setDB(sqlite3* DB);
+        // getter and setter method
+        int setDB(std::string dbAdress);
 };
 
 #endif
