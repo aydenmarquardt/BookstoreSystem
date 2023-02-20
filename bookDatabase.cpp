@@ -1,14 +1,19 @@
 #include "bookDatabase.h"
-#include "lib/sqlite3.h"
-#include <iostream>
+#include "sqlite3.h"
 #include <string>
 
 bookDatabase::bookDatabase(){
+    *bookDatabase::resultCode = -1;
+}
 
+bookDatabase::~bookDatabase(){
+    delete bookDatabase::resultCode;
 }
 
 int bookDatabase::setDB(std::string dbAddress){
-    bookDatabase::resultCode = sqlite3_open(dbAddress, &DB);
+    *bookDatabase::resultCode = sqlite3_open(dbAddress.c_str(), &DB);
 
-    return bookDatabase::resultCode;
+    return *bookDatabase::resultCode;
 }
+
+
